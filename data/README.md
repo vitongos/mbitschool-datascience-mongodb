@@ -18,7 +18,7 @@ Ejecutar en un terminal:
 ```bash
 cd /home/centos/data
 tar xvf register.json.gz
-mongoimport -d test -c registerTiny test/register.bson
+mongorestore -d test -c registerTiny test/register.bson
 rm -rf test
 ```
 
