@@ -1,22 +1,23 @@
 package mongodb.replicaset;
 
 import java.net.UnknownHostException;
+import java.util.Arrays;
 
 import org.bson.Document;
 
 import com.mongodb.*;
 import com.mongodb.client.*;
 
-/**
- * Hello world!
- *
- */
 public class Write 
 {
     public static void main( String[] args ) throws UnknownHostException, InterruptedException
     {
-    	@SuppressWarnings("resource")
-		MongoClient client = new MongoClient(new ServerAddress("localhost", 30001));
+				@SuppressWarnings("resource")
+				MongoClient client = new MongoClient(Arrays.asList(
+					 new ServerAddress("localhost", 30001),
+					 new ServerAddress("localhost", 30002),
+					 new ServerAddress("localhost", 30003)
+				));
         MongoCollection<Document> collection = client.getDatabase("samples").getCollection("ids");
         collection.drop();
         
